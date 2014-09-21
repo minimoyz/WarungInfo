@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <!-- Berita Items -->
+    <string-array name="judul_berita">
+        <item >Bina Marga optimis mampu mencapai target Renstra 2010-2014</item>
+        <item >Groundbreaking Jalan Padang Baypass dan Infrastruktur di Kawasan Sumatera</item>
+        <item >Menteri PU Resmikan Infrastrukur Bina Marga di Sumatera</item>
+        <item >Uji Coba Jembatan Comal Mulai Dilakukan Hari Ini</item>
+        <item >Tol Pejagan-Pemalang Mulai Dibangun Dan Beroperasi 2016</item>
+    </string-array>
+
+    <!-- Tanggal Berita Items -->
+    <string-array name="tanggal_berita">
+        <item >08 September 2014</item>
+        <item >01 September 2014</item>
+        <item >29 August 2014</item>
+        <item >24 July 2014</item>
+        <item >23 July 2014</item>
+    </string-array>
+
+    <!-- Image Berita Items-->
+    <array name="img_news">
+        <item>@drawable/crop_pict6</item>
+        <item>@drawable/crop_pict7</item>
+        <item>@drawable/crop_pict8</item>
+        <item>@drawable/crop_pict1</item>
+        <item>@drawable/crop_pict9</item>
+    </array>
+
+    <!-- Agenda Items -->
+    <string-array name="judul_agenda">
+        <item >Uji Coba Jembatan Comal Mulai Dilakukan Hari Ini</item>
+        <item >DWP Bina Marga Berbagi di Bulan yang Fitri</item>
+        <item >Partisipasi Bina Marga Pada Pameran Hari Air Dunia 2014</item>
+        <item >Bina Marga Dalam Pameran Indonesia Climate Change Education 2014</item>
+        <item >PENANDATANGAN KONTRAK PAKET-PAKET PEKERJAAN BPJN VIII TA 2014</item>
+    </string-array>
+
+    <!-- Tanggal Agenda Items -->
+    <string-array name="tanggal_agenda">
+        <item >24 Jul 2014</item>
+        <item >3 Jul 2014</item>
+        <item >16 Jun 2014</item>
+        <item >12 Jun 2014</item>
+        <item >1 Mei 2014</item>
+    </string-array>
+
+    <!-- Image Agenda Items-->
+    <array name="img_agenda">
+        <item>@drawable/crop_pict1</item>
+        <item>@drawable/crop_pict2</item>
+        <item>@drawable/crop_pict3</item>
+        <item>@drawable/crop_pict4</item>
+        <item>@drawable/crop_pict5</item>
+    </array>
+
+    <!-- String sementara Berita baru -->
+    <string name="judul_berita">Bina Marga optimis mampu mencapai target Renstra 2010-2014</string>
+    <string name="tanggal_berita">08 September 2014</string>
+    <string name="isi_berita">Direktur Jenderal (Dirjen) Bina Marga, Djoko Murjanto, dihadapan para anggota Komisi V DPR RI menyatakan keoptimisannya mampu mencapai target Renstra 2010-2014. Berbicara mengenai capaian target kemantapan jalan nasional sebesar 94%, diharapkan bahwa Bina Marga mampu melebihi target karena melihat progres pada akhir tahun 2013, capaian kemantapan jalan sudah sebesar 92,95%. “Mudah-mudahan kita akan melebihi target sebesar 94% karena persiapan yang kita lakukan lebih tinggi,” papar Djoko.  Capaian lainnya yang mampu dipenuhi oleh Direktorat Jenderal Bina Marga antara lain mengenai preservasi jalan dan jembatan, pembangunan jalan dan jembatan baru, serta pembangunan jalan dan jembatan di wilayah strategis ataupun perbatasan terluar Indonesia.\n\n\nDjoko melanjutkan bahwa hingga awal September, pencapaian progres fisik dan penyerapan keuangan Ditjen Bina Marga tergolong tinggi, yakni sebesar 60,12% dan 50,77%. Diharapkan pada trimester terakhir tahun ini kendala non teknis dapat diatasi sehingga target fisik dan juga penyerapan keuangan dapat terlaksana semaksimal mungkin. Tak lupa, dalam paparannya Djoko juga menyinggung mengenai Peringkat Daya Saing Indonesia berdasarkan World Economic Forum 2014-2015 yang berada di posisi 34, meningkat 4 peringkat dari tahun sebelumnya yakni pada posisi 38. “Posisi infrastruktur dan kualitas jalan pun meningkat. Pada tahun sebelumnya, Indonesia berada di peringkat 82 dalam hal infrastruktur, sementara di tahun ini meningkat cukup signifikan, yakni berada di posisi 72. Peningkatan serupa juga terjadi di bidang kualitas jalan, Indonesia yang sebelumnya berada di posisi 78, tahun ini menempati posisi 72,” ujarnya. Ia melanjutkan bahwa peningkatan posisi ini merupakan sesuatu yang patut diapreasi karena merupakan hasil kerja keras pemerintah dan juga Komisi V DPR RI.\n\n\n
+Saat membahas mengenai Rancangan Teknokratik Renstra tahun 2015-2019, Dirjen Bina Marga menegaskan bahwa arah kebijakan dan strategi mengenai infrastruktur jaringan jalan harus tetap sesuai dengan  Rencana Tata Ruang Wilayah (RTRW), baik nasional, provinsi, kabupaten, maupun kawasan-kawasan khusus. “Oleh karenanya, setiap berbicara mengenai jaringan jalan harus melihat RTRW-nya, jangan sampai menjadi kendala. Karena jalan inilah yang seharusnya menjadi struktur dari tata ruang,” imbuhnya. Yang tak kalah pentingnya dalam kebijakan dan strategi yang dilakukan oleh Ditjen Bina Marga adalah upaya meningkatkan life-cycle untuk jalan nasional dari 10 tahun menjadi 20 tahun. </string>
+
+    <!-- String sementara agenda -->
+    <string name="judul_agenda">Uji Coba Jembatan Comal Mulai Dilakukan Hari Ini</string>
+    <string name="tanggal_agenda">24 Jul 2014</string>
+    <string name="isi_agenda"></string>
+
+    <!-- GALERI -->
+
+    <string-array name="title_galeri">
+        <item >Lorem Ipsum 1</item>
+        <item >Lorem Ipsum 2</item>
+        <item >Lorem Ipsum 3</item>
+        <item >Lorem Ipsum 4</item>
+        <item >Lorem Ipsum 5</item>
+    </string-array>
+
+    <array name="detail">
+        <item>Lorem Ipsum</item>
+        <item>Lorem Ipsum</item>
+        <item>Lorem Ipsum</item>
+        <item>Lorem Ipsum</item>
+        <item>Lorem Ipsum</item>
+    </array>
+
+
+</resources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cm="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp">
+
+    <ImageView
+        android:id="@+id/image_galeri"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/img_height"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/crop_pict1" />
+
+    <com.pu.anonymous.mobileinformationcenter.view.CustomTextView
+        android:id="@+id/title_galeri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:maxLines="3"
+        android:background="@color/cokelat_tua"
+        android:text="INI TITLE\nCOba"
+        android:textSize="@dimen/textSizeTittle"
+        android:layout_below="@+id/image_galeri"
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        cm:fontType="roman" />
+
+    <com.pu.anonymous.mobileinformationcenter.view.CustomTextView
+        android:id="@+id/detail_galeri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_galeri"
+        android:layout_alignParentRight="true"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:text="INI DETAIL GALERI"
+        android:textColor="#000"
+        android:textSize="@dimen/textSizeTanggal"
+        cm:fontType="roman" />
+
+</RelativeLayout>

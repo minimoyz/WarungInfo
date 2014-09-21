@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MobileInformationCenter.iml" filepath="$PROJECT_DIR$/MobileInformationCenter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/WarungInfo/WarungInfo.iml" filepath="$PROJECT_DIR$/WarungInfo/WarungInfo.iml" />
+    </modules>
+  </component>
+</project>
+

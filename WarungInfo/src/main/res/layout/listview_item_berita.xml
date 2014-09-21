@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cm="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingBottom="10dp"
+    android:background="@android:color/white"
+    android:paddingTop="10dp">
+
+    <com.pu.anonymous.mobileinformationcenter.view.CustomTextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:maxLines="3"
+        android:text="INI TITLE"
+        android:textSize="@dimen/textSizeTittle"
+        cm:fontType="roman" />
+
+    <com.pu.anonymous.mobileinformationcenter.view.CustomTextView
+        android:id="@+id/tanggal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:gravity="center_vertical"
+        android:paddingTop="5dp"
+        android:text="INI TANGGAL"
+        android:textColor="#000"
+        android:textSize="@dimen/textSizeTanggal"
+        cm:fontType="lc" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/img_height"
+        android:layout_below="@+id/tanggal"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/crop_pict6" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image"
+        android:paddingTop="5dp">
+
+        <ImageButton
+            android:id="@+id/btnShare"
+            android:layout_width="@dimen/layout_width"
+            android:layout_height="@dimen/layout_height"
+            android:layout_alignParentLeft="true"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:src="@drawable/select_share" />
+
+        <ImageButton
+            android:id="@+id/btnKomentar"
+            android:layout_width="@dimen/layout_width"
+            android:layout_height="@dimen/layout_height"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/btnShare"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:src="@drawable/select_comment" />
+
+        <ToggleButton
+            android:id="@+id/btnFavorit"
+            android:layout_width="@dimen/layout_width"
+            android:layout_height="@dimen/layout_height"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@id/btnKomentar"
+            android:background="@android:color/transparent"
+            android:button="@drawable/select_like"
+            android:textOff=""
+            android:textOn="" />
+
+        <ImageButton
+            android:id="@+id/btnDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/layout_height"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/btn_baca_komentar" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Warung Info</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="label1">Struktur Organisasi</string>
+    <string name="label2">Tugas Dan Fungsi</string>
+    <string name="label3">Memori Tugas Akhir</string>
+
+    <string name="drawer_open">Slider Menu Opened</string>
+    <string name="drawer_close">Slider Menu Closed</string>
+
+    <!-- TITTLE DRAWER MENU -->
+    <string name="menu">Menu</string>
+    <string name="berita">Berita Terbaru</string>
+    <string name="profil_binlak">Profil Bina Pelaksanaan Wilayah 2</string>
+    <string name="galeri">Galeri</string>
+    <string name="agenda">Agenda</string>
+
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item >Berita Terbaru</item>
+        <item >Profil Binlak 2</item>
+        <item >Galeri</item>
+        <item >Agenda</item>
+    </string-array>
+
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/icon_berita_terbaru</item>
+        <item>@drawable/icon_profile_user</item>
+        <item>@drawable/icon_gallery</item>
+        <item>@drawable/icon_agenda</item>
+    </array>
+
+    <!-- Content Description -->
+    <string name="description_list_icon">Item Icon</string>
+
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="slidingmenu_offset">40dp</dimen>
+	<dimen name="shadow_width">15dp</dimen>
+
+
+    <!-- SPLASH -->
+    <dimen name="splash_logo_layout_height">110dp</dimen>
+    <dimen name="splash_logo_poweredBy_width">130dp</dimen>
+    <dimen name="splash_logo_poweredBy_height">90dp</dimen>
+	
+	<!-- LOGIN -->
+	<dimen name="logo_layout_height">110dp</dimen>
+	<dimen name="logo_layout_width">110dp</dimen>
+	<dimen name="username_textSize">14sp</dimen>
+	<dimen name="password_textSize">@dimen/username_textSize</dimen>
+	<dimen name="btn_height">30dp</dimen>
+	<dimen name="btn_textSize">@dimen/username_textSize</dimen>
+    <dimen name="forgot_textSize">14sp</dimen>
+	
+	<!-- SIDE MENU -->
+	<dimen name="icon_width">20dp</dimen>
+    <dimen name="icon_height">20dp</dimen>
+    <dimen name="icon_margin_left">5dp</dimen>
+    <dimen name="icon_margin_right">5dp</dimen>
+    <dimen name="text_size_side">12dp</dimen>
+
+    <!-- TITTLE TEXT -->
+    <dimen name="textSizeTittle">14dp</dimen>
+    <dimen name="textSizeTanggal">12sp</dimen>
+    <dimen name="textSizeIsi">13sp</dimen>
+    <dimen name="layout_width">25dp</dimen>
+    <dimen name="layout_height">25dp</dimen>
+    <dimen name="img_height">173dp</dimen>
+
+    <!-- PROFIL BINLAK -->
+    <dimen name="ImageView_Height">100dp</dimen>
+
+    <!-- AGENDA -->
+    <dimen name="width_text">240dp</dimen>
+
+
+</resources>
