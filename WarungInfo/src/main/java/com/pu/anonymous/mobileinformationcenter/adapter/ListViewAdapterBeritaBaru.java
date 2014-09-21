@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.pu.anonymous.mobileinformationcenter.IsiBerita;
 import com.pu.anonymous.mobileinformationcenter.R;
+import com.pu.anonymous.mobileinformationcenter.model.BeritaModel;
 import com.pu.anonymous.mobileinformationcenter.model.NewsItem;
 
 import java.util.List;
@@ -23,9 +24,9 @@ import java.util.List;
 public class ListViewAdapterBeritaBaru extends BaseAdapter {
 
     Context context;
-    List<NewsItem> newsItem;
+    List<BeritaModel> newsItem;
 
-    public ListViewAdapterBeritaBaru(Context context, List<NewsItem> newsItem) {
+    public ListViewAdapterBeritaBaru(Context context, List<BeritaModel> newsItem) {
         this.context = context;
         this.newsItem = newsItem;
     }
@@ -76,9 +77,9 @@ public class ListViewAdapterBeritaBaru extends BaseAdapter {
         });
 
 
-        NewsItem row_pos = newsItem.get(position);
+        BeritaModel row_pos = newsItem.get(position);
         // setting the image resource and title
-        imgIcon.setImageResource(row_pos.getIcon());
+//        imgIcon.setImageResource(row_pos.getGambar());
         txtTitle.setText(row_pos.getJudul());
         txttanggal.setText("Published : " + row_pos.getTanggal());
 

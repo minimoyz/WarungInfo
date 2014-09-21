@@ -13,11 +13,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.pu.anonymous.mobileinformationcenter.adapter.ListViewAdapterBeritaBaru;
+import com.pu.anonymous.mobileinformationcenter.model.BeritaModel;
 import com.pu.anonymous.mobileinformationcenter.model.NewsItem;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -33,7 +35,7 @@ public class FragmentBeritaBaru extends ListFragment implements AdapterView.OnIt
     String[] tanggal;
     TypedArray image;
     int btn;
-
+    ArrayList<BeritaModel> listBerita = new ArrayList<BeritaModel>();
     ListViewAdapterBeritaBaru adapter;
     private List<NewsItem> newsItems;
 
@@ -50,20 +52,19 @@ public class FragmentBeritaBaru extends ListFragment implements AdapterView.OnIt
 
         super.onActivityCreated(savedInstanceState);
 
-        judul = getResources().getStringArray(R.array.judul_berita);
-        tanggal = getResources().getStringArray(R.array.tanggal_berita);
-        image = getResources().obtainTypedArray(R.array.img_news);
+//        judul = getResources().getStringArray(R.array.judul_berita);
+//        tanggal = getResources().getStringArray(R.array.tanggal_berita);
+//        image = getResources().obtainTypedArray(R.array.img_news);
+//
+//        newsItems = new ArrayList<NewsItem>();
+//
+//        for (int i = 0; i < judul.length; i++) {
+//            NewsItem items = new NewsItem(judul[i], tanggal[i], image.getResourceId(i, -1));
+//
+//            newsItems.add(items);
+//        }
 
-        newsItems = new ArrayList<NewsItem>();
-
-        for (int i = 0; i < judul.length; i++) {
-            NewsItem items = new NewsItem(judul[i], tanggal[i], image.getResourceId(i, -1));
-
-            newsItems.add(items);
-        }
-
-        adapter = new ListViewAdapterBeritaBaru(getActivity(), newsItems);
-        setListAdapter(adapter);
+            new GetBerita().execute();
 
         getListView().setOnItemClickListener(this);
 
@@ -114,22 +115,17 @@ public class FragmentBeritaBaru extends ListFragment implements AdapterView.OnIt
                         // looping through All Contacts
                         for (int i = 0; i < jsonBerita.length(); i++) {
                             JSONObject c = jsonBerita.getJSONObject(i);
-                            DataContohSoal data = new DataContohSoal(c.getInt(getResources().getString(R.string.TAG_id_soal)),
-                                    c.getString(getResources().getString(R.string.TAG_nama_soal)),
-                                    c.getString(getResources().getString(R.string.TAG_nama_kategori)),
-                                    c.getString(getResources().getString(R.string.TAG_id_user)),
-                                    c.getString(getResources().getString(R.string.TAG_jenis_bangun)),
-                                    c.getString(getResources().getString(R.string.TAG_nama_bangun)),
-                                    c.getString(getResources().getString(R.string.TAG_soal)),
-                                    c.getString(getResources().getString(R.string.TAG_tanggal)));
+                            BeritaModel data = new BeritaModel(c.getInt("id"),
+                                    c.getString("tittle"),
+                                    c.getString("tanggal"),
+                                    c.getString("gambar"),
+                                    c.getString("like"));
+
 
                             // adding contact to contact list
-                            dataContohSoals.add(data);
+                            listBerita.add(data);
                         }}
-                    else if(result==2){
 
-
-                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -143,6 +139,8 @@ public class FragmentBeritaBaru extends ListFragment implements AdapterView.OnIt
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+            adapter = new ListViewAdapterBeritaBaru(getActivity(), listBerita);
+            setListAdapter(adapter);
             // Dismiss the progress dialog
             if (pDialog.isShowing())
                 pDialog.dismiss();
