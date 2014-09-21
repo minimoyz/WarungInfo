@@ -1,8 +1,12 @@
 package com.pu.anonymous.mobileinformationcenter;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.res.TypedArray;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +15,11 @@ import android.widget.AdapterView;
 import com.pu.anonymous.mobileinformationcenter.adapter.ListViewAdapterBeritaBaru;
 import com.pu.anonymous.mobileinformationcenter.model.NewsItem;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +27,8 @@ import java.util.List;
  * Created by Anonymous on 09/09/2014.
  */
 public class FragmentBeritaBaru extends ListFragment implements AdapterView.OnItemClickListener {
-
+    ProgressDialog pDialog;
+    JSONArray jsonBerita = null;
     String[] judul;
     String[] tanggal;
     TypedArray image;
@@ -62,5 +72,84 @@ public class FragmentBeritaBaru extends ListFragment implements AdapterView.OnIt
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position,
                             long id) {
+    }
+
+    private class GetBerita extends AsyncTask<String, String, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Showing progress dialog
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setMessage("Mohon Tunggu...");
+            pDialog.setCancelable(true);
+            pDialog.show();
+
+        }
+        @Override
+        protected String doInBackground(String... arg0) {
+            // Creating service handler class instance
+            ServiceHandler sh = new ServiceHandler();
+            // Building Parameters
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+            params.add(new BasicNameValuePair("method","getnews"));
+            params.add(new BasicNameValuePair("start","0"));
+            params.add(new BasicNameValuePair("limit","100"));
+            params.add(new BasicNameValuePair("uid","1"));
+             // Making a request to url and getting response
+            String jsonStr = sh.makeServiceCall(getResources().getString(R.string.url), ServiceHandler.GET,params);
+
+            Log.d("Response: ", "> " + jsonStr);
+
+            if (jsonStr != null) {
+                try {
+                    JSONObject jsonObj = new JSONObject(jsonStr);
+
+                    // Getting JSON Array node
+                    int result = jsonObj.getInt("result");
+                    if(result==1){
+                        jsonBerita = jsonObj.getJSONArray("data");
+
+                        // looping through All Contacts
+                        for (int i = 0; i < jsonBerita.length(); i++) {
+                            JSONObject c = jsonBerita.getJSONObject(i);
+                            DataContohSoal data = new DataContohSoal(c.getInt(getResources().getString(R.string.TAG_id_soal)),
+                                    c.getString(getResources().getString(R.string.TAG_nama_soal)),
+                                    c.getString(getResources().getString(R.string.TAG_nama_kategori)),
+                                    c.getString(getResources().getString(R.string.TAG_id_user)),
+                                    c.getString(getResources().getString(R.string.TAG_jenis_bangun)),
+                                    c.getString(getResources().getString(R.string.TAG_nama_bangun)),
+                                    c.getString(getResources().getString(R.string.TAG_soal)),
+                                    c.getString(getResources().getString(R.string.TAG_tanggal)));
+
+                            // adding contact to contact list
+                            dataContohSoals.add(data);
+                        }}
+                    else if(result==2){
+
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Log.e("ServiceHandler", "Couldn't get any data from the url");
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            // Dismiss the progress dialog
+            if (pDialog.isShowing())
+                pDialog.dismiss();
+
+        }
+
+
+
     }
 }

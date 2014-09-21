@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Warung Info</string>
-
+    <string name="url">http://warunginfo.meximas.com/api.php</string>
     <string name="action_settings">Settings</string>
 
     <string name="label1">Struktur Organisasi</string>
