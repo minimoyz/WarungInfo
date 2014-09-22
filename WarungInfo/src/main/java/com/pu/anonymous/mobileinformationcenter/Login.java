@@ -35,7 +35,7 @@ public class Login extends Activity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //teat
                 //session login in here
                 startActivity(new Intent(Login.this, SignUp.class));
 
