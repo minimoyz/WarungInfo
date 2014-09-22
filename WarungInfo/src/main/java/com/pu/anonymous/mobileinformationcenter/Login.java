@@ -37,6 +37,7 @@ public class Login extends Activity {
             public void onClick(View v) {
                 //teat
                 //session login in here
+                //jjjjjjjjgeje
                 startActivity(new Intent(Login.this, SignUp.class));
 
             }
