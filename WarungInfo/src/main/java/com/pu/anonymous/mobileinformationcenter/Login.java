@@ -36,8 +36,6 @@ public class Login extends Activity {
             @Override
             public void onClick(View v) {
                 //teat
-                // deden ganteng
-                //jkejdlkasjflkdsjlfkjfsldjfksl
                 //session login in here
                 startActivity(new Intent(Login.this, SignUp.class));
 
