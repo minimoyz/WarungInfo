@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.pu.anonymous.mobileinformationcenter.IsiBerita;
 import com.pu.anonymous.mobileinformationcenter.R;
 import com.pu.anonymous.mobileinformationcenter.model.BeritaModel;
@@ -82,7 +83,8 @@ public class ListViewAdapterBeritaBaru extends BaseAdapter {
 //        imgIcon.setImageResource(row_pos.getGambar());
         txtTitle.setText(row_pos.getJudul());
         txttanggal.setText("Published : " + row_pos.getTanggal());
-
+        ImageLoader.getInstance().displayImage(context.getResources().getString(R.string.urlimage)+row_pos.getGambar(),imgIcon);
+        System.out.println("image ="+row_pos.getGambar());
         return convertView;
 
         }

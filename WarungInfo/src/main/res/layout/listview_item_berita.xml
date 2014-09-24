@@ -39,7 +39,7 @@
         android:layout_below="@+id/tanggal"
         android:layout_marginTop="10dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/crop_pict6" />
+        android:src="@drawable/logo_app" />
 
     <RelativeLayout
         android:layout_width="match_parent"
