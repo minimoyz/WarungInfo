@@ -68,9 +68,9 @@ public class MainActivity extends ActionBarActivity {
                 .threadPriority(Thread.NORM_PRIORITY - 2)
                 .denyCacheImageMultipleSizesInMemory()
                 .diskCache(new UnlimitedDiscCache(cacheDir)) // default
-                .diskCacheFileCount(100)
+                .diskCacheFileCount(50)
                 .diskCacheFileNameGenerator(new Md5FileNameGenerator())
-                .diskCacheSize(50 * 1024 * 1024) // 50 Mb
+                .diskCacheSize(20 * 1024 * 1024) // 20 Mb
                 .tasksProcessingOrder(QueueProcessingType.LIFO)
                 .writeDebugLogs() // Remove for release app
                 .build();

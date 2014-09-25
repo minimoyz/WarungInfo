@@ -9,8 +9,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.pu.anonymous.mobileinformationcenter.R;
 import com.pu.anonymous.mobileinformationcenter.model.AgendaItem;
+import com.pu.anonymous.mobileinformationcenter.model.AgendaModel;
 
 import java.util.List;
 
@@ -20,11 +24,19 @@ import java.util.List;
 public class ListViewAdapterAgenda extends BaseAdapter {
 
     Context context;
-    List<AgendaItem> agendaItem;
-
-    public ListViewAdapterAgenda(Context context, List<AgendaItem> agendaItem) {
+    List<AgendaModel> agendaItem;
+    DisplayImageOptions options;
+    public ListViewAdapterAgenda(Context context, List<AgendaModel> agendaItem) {
         this.context = context;
         this.agendaItem = agendaItem;
+        options = new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.drawable.logo_app)
+                .showImageForEmptyUri(R.drawable.logo_app)
+                .showImageOnFail(R.drawable.logo_app)
+                .cacheOnDisk(true)
+                .considerExifParams(true)
+                .displayer(new RoundedBitmapDisplayer(10))
+                .build();
     }
 
     @Override
@@ -54,11 +66,11 @@ public class ListViewAdapterAgenda extends BaseAdapter {
         TextView txtTitle = (TextView) convertView.findViewById(R.id.title_agenda);
         TextView txttanggal = (TextView) convertView.findViewById(R.id.tanggal_agenda);
 
-        AgendaItem row_pos = agendaItem.get(position);
+        AgendaModel row_pos = agendaItem.get(position);
         // setting the image resource and title
-        imgIcon.setImageResource(row_pos.getIcon());
-        txtTitle.setText(row_pos.getJudulAgenda());
-        txttanggal.setText(row_pos.getTanggalAgenda());
+        ImageLoader.getInstance().displayImage(context.getResources().getString(R.string.urlimage)+row_pos.getGambar(),imgIcon,options);
+        txtTitle.setText(row_pos.getJudul());
+        txttanggal.setText(row_pos.getTanggal());
 
         return convertView;
 

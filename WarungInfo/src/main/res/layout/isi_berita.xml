@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:maxLines="3"
-            android:text="INI TITLE"
+            android:text=""
             android:textSize="@dimen/textSizeTittle"
             cm:fontType="roman" />
 
@@ -31,7 +31,7 @@
             android:gravity="center_vertical"
             android:paddingTop="5dp"
             android:text="Published : "
-            android:textColor="#000"
+            android:textColor="#9E9E9E"
             android:textSize="@dimen/textSizeTanggal"
             cm:fontType="lc" />
 
@@ -43,8 +43,8 @@
             android:layout_below="@+id/berita_title"
             android:gravity="center_vertical"
             android:paddingTop="5dp"
-            android:text="INI TANGGAL"
-            android:textColor="#000"
+            android:text=""
+            android:textColor="#9E9E9E"
             android:textSize="@dimen/textSizeTanggal"
             cm:fontType="lc" />
 
@@ -67,7 +67,7 @@
             android:gravity="center_vertical"
             android:lineSpacingExtra="1sp"
             android:maxLines="100"
-            android:text="INI ADALAH ISI\ncoba"
+            android:text=""
             android:textColor="#000"
             android:textSize="@dimen/textSizeIsi"
             cm:fontType="roman" />
@@ -82,29 +82,6 @@
             android:background="@android:color/transparent"
             android:scaleType="centerInside"
             android:src="@drawable/select_share" />
-
-        <ImageButton
-            android:id="@+id/berita_btnKomentar"
-            android:layout_width="@dimen/layout_width"
-            android:layout_height="@dimen/layout_height"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@id/berita_btnShare"
-            android:background="@android:color/transparent"
-            android:scaleType="centerInside"
-            android:src="@drawable/select_comment" />
-
-        <ToggleButton
-            android:id="@+id/berita_btnFavorit"
-            android:layout_width="@dimen/layout_width"
-            android:layout_height="@dimen/layout_height"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@id/berita_btnKomentar"
-            android:background="@android:color/transparent"
-            android:button="@drawable/select_like"
-            android:textOff=""
-            android:textOn="" />
 
         <ImageButton
             android:id="@+id/berita_btnDetail"

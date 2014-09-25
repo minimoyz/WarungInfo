@@ -11,7 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.pu.anonymous.mobileinformationcenter.IsiBerita;
 import com.pu.anonymous.mobileinformationcenter.R;
 import com.pu.anonymous.mobileinformationcenter.model.BeritaModel;
@@ -26,10 +28,18 @@ public class ListViewAdapterBeritaBaru extends BaseAdapter {
 
     Context context;
     List<BeritaModel> newsItem;
-
+    DisplayImageOptions options;
     public ListViewAdapterBeritaBaru(Context context, List<BeritaModel> newsItem) {
         this.context = context;
         this.newsItem = newsItem;
+        options = new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.drawable.logo_app)
+                .showImageForEmptyUri(R.drawable.logo_app)
+                .showImageOnFail(R.drawable.logo_app)
+                .cacheOnDisk(true)
+                .considerExifParams(true)
+                .displayer(new RoundedBitmapDisplayer(10))
+                .build();
     }
 
     @Override
@@ -61,29 +71,28 @@ public class ListViewAdapterBeritaBaru extends BaseAdapter {
         TextView txttanggal = (TextView) convertView.findViewById(R.id.tanggal);
 
 
-
+        final BeritaModel row_pos = newsItem.get(position);
         ImageButton btnBaca = (ImageButton) convertView.findViewById(R.id.btnDetail);
         btnBaca.setTag(position);
         btnBaca.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(v.getContext(), "button position : " + position, Toast.LENGTH_LONG).sho);
-               if(position == 0) {
+
                    Intent isiBerita = new Intent(v.getContext(), IsiBerita.class);
+                    isiBerita.putExtra("ID",Integer.toString(row_pos.getId()));
                    context.startActivity(isiBerita);
-                } else {
-                    Toast.makeText(v.getContext(), "Masih dalam tahap penyelesaian", Toast.LENGTH_LONG).show();
-                }
+
             }
         });
 
 
-        BeritaModel row_pos = newsItem.get(position);
+
         // setting the image resource and title
 //        imgIcon.setImageResource(row_pos.getGambar());
         txtTitle.setText(row_pos.getJudul());
         txttanggal.setText("Published : " + row_pos.getTanggal());
-        ImageLoader.getInstance().displayImage(context.getResources().getString(R.string.urlimage)+row_pos.getGambar(),imgIcon);
+        ImageLoader.getInstance().displayImage(context.getResources().getString(R.string.urlimage)+row_pos.getGambar(),imgIcon,options);
         System.out.println("image ="+row_pos.getGambar());
         return convertView;
 

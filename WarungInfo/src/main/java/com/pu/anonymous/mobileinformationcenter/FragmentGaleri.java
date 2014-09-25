@@ -1,14 +1,17 @@
 package com.pu.anonymous.mobileinformationcenter;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,9 +27,19 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.pu.anonymous.mobileinformationcenter.adapter.ListViewAdapterBeritaBaru;
+import com.pu.anonymous.mobileinformationcenter.model.BeritaModel;
+import com.pu.anonymous.mobileinformationcenter.model.GaleriModel;
 import com.pu.anonymous.mobileinformationcenter.model.NewsItem;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Anonymous on 09/09/2014.
@@ -35,7 +48,10 @@ public class FragmentGaleri extends Fragment {
 
     private DisplayImageOptions options;
     private ActionBarActivity activity;
-
+    ProgressDialog pDialog;
+    JSONArray jsonGallery = null;
+    ViewPager viewPager;
+    ArrayList<GaleriModel> listGallery= new ArrayList<GaleriModel>();
     public FragmentGaleri() {
     }
 
@@ -52,21 +68,96 @@ public class FragmentGaleri extends Fragment {
         initImageOption();
 
         View rootView = inflater.inflate(R.layout.fragment_gallery, container, false);
-        ViewPager viewPager = (ViewPager) rootView.findViewById(R.id.galleryView);
-        ArrayList<NewsItem> listBitmap = new ArrayList<NewsItem>();
-        String[] titles = getResources().getStringArray(R.array.title_galeri);
-        String[] detail = getResources().getStringArray(R.array.detail);
-        Resources res = getResources();
+        viewPager = (ViewPager) rootView.findViewById(R.id.galleryView);
+        new GetGallery().execute();
+//        ArrayList<NewsItem> listBitmap = new ArrayList<NewsItem>();
+//        String[] titles = getResources().getStringArray(R.array.title_galeri);
+//        String[] detail = getResources().getStringArray(R.array.detail);
+//        Resources res = getResources();
+//
+//        listBitmap.add(initDummy(R.drawable.pict1, titles[0], detail[0]));
+//        listBitmap.add(initDummy(R.drawable.pict2, titles[1], detail[1]));
+//        listBitmap.add(initDummy(R.drawable.pict3, titles[2], detail[2]));
+//        listBitmap.add(initDummy(R.drawable.pict4, titles[3], detail[3]));
+//        listBitmap.add(initDummy(R.drawable.pict5, titles[4], detail[4]));
+//
 
-        listBitmap.add(initDummy(R.drawable.pict1, titles[0], detail[0]));
-        listBitmap.add(initDummy(R.drawable.pict2, titles[1], detail[1]));
-        listBitmap.add(initDummy(R.drawable.pict3, titles[2], detail[2]));
-        listBitmap.add(initDummy(R.drawable.pict4, titles[3], detail[3]));
-        listBitmap.add(initDummy(R.drawable.pict5, titles[4], detail[4]));
-
-        viewPager.setAdapter(new GaleriAdapter(listBitmap));
 
         return rootView;
+    }
+
+    private class GetGallery extends AsyncTask<String, String, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Showing progress dialog
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setMessage("Mohon Tunggu...");
+            pDialog.setCancelable(true);
+            pDialog.show();
+
+        }
+        @Override
+        protected String doInBackground(String... arg0) {
+            // Creating service handler class instance
+            ServiceHandler sh = new ServiceHandler();
+            // Building Parameters
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+            params.add(new BasicNameValuePair("method","getgallery"));
+            params.add(new BasicNameValuePair("start","0"));
+            params.add(new BasicNameValuePair("limit","100"));
+            // Making a request to url and getting response
+            String jsonStr = sh.makeServiceCall(getResources().getString(R.string.url), ServiceHandler.GET,params);
+
+            Log.d("Response: ", "> " + jsonStr);
+
+            if (jsonStr != null) {
+                try {
+                    JSONObject jsonObj = new JSONObject(jsonStr);
+
+                    // Getting JSON Array node
+                    int result = jsonObj.getInt("result");
+                    if(result==1){
+                        jsonGallery = jsonObj.getJSONArray("data");
+
+                        // looping through All Contacts
+                        for (int i = 0; i < jsonGallery.length(); i++) {
+                            JSONObject c = jsonGallery.getJSONObject(i);
+                            GaleriModel data = new GaleriModel(c.getInt("id"),
+                                    c.getString("judul"),
+                                    c.getString("deskripsi"),
+                                    c.getString("gambar"),
+                                    c.getString("tanggal"));
+
+
+                            // adding contact to contact list
+                            listGallery.add(data);
+                        }}
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Log.e("ServiceHandler", "Couldn't get any data from the url");
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            viewPager.setAdapter(new GaleriAdapter(listGallery));
+            // Dismiss the progress dialog
+            if (pDialog.isShowing())
+                pDialog.dismiss();
+
+        }
+
+
+
     }
 
     private NewsItem initDummy(int imageResource, String title, String detail) {
@@ -108,12 +199,13 @@ public class FragmentGaleri extends Fragment {
                 .build();
     }
 
+
     public class GaleriAdapter extends PagerAdapter {
 
-        private ArrayList<NewsItem> listBitmap;
+        private ArrayList<GaleriModel> listGallery;
 
-        public GaleriAdapter(ArrayList<NewsItem> listBitmap) {
-            this.listBitmap = listBitmap;
+        public GaleriAdapter(ArrayList<GaleriModel> listGallery) {
+            this.listGallery = listGallery;
         }
 
         @Override
@@ -124,11 +216,11 @@ public class FragmentGaleri extends Fragment {
             TextView title = (TextView) v.findViewById(R.id.title_galeri);
             TextView detail = (TextView) v.findViewById(R.id.detail_galeri);
 
-            NewsItem item = listBitmap.get(position);
+            GaleriModel item = listGallery.get(position);
             title.setText(item.getJudul());
-            detail.setText(item.getIsiberita());
+            detail.setText(item.getDeskripsi());
 
-            ImageLoader.getInstance().displayImage("drawable://" + item.getIcon(), imgGaleri, options, new SimpleImageLoadingListener() {
+            ImageLoader.getInstance().displayImage(getResources().getString(R.string.urlimage)+item.getGambar(), imgGaleri, options, new SimpleImageLoadingListener() {
 
                 @Override
                 public void onLoadingStarted(String imageUri, View view) {
@@ -166,7 +258,7 @@ public class FragmentGaleri extends Fragment {
 
         @Override
         public int getCount() {
-            return listBitmap.size();
+            return listGallery.size();
         }
 
         @Override

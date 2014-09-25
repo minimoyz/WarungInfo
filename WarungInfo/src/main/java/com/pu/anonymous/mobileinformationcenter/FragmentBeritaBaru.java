@@ -120,7 +120,7 @@ public class FragmentBeritaBaru extends ListFragment implements AdapterView.OnIt
                                     c.getString("tittle"),
                                     c.getString("tanggal"),
                                     c.getString("gambar"),
-                                    c.getString("like"));
+                                    c.getString("like"),"");
 
 
                             // adding contact to contact list

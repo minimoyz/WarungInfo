@@ -5,14 +5,15 @@ package com.pu.anonymous.mobileinformationcenter.model;
  */
 public class BeritaModel {
     int id;
-    String judul, tanggal, gambar, like;
+    String judul, tanggal, gambar, like, isi;
 
-    public BeritaModel(int id, String judul, String tanggal, String gambar, String like) {
+    public BeritaModel(int id, String judul, String tanggal, String gambar, String like , String isi) {
         this.id = id;
         this.judul = judul;
         this.tanggal = tanggal;
         this.gambar = gambar;
         this.like = like;
+        this.isi = isi;
     }
 
     public int getId() {
@@ -53,5 +54,13 @@ public class BeritaModel {
 
     public void setLike(String like) {
         this.like = like;
+    }
+
+    public String getIsi() {
+        return isi;
+    }
+
+    public void setIsi(String isi) {
+        this.isi = isi;
     }
 }
